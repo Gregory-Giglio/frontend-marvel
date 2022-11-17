@@ -1,14 +1,14 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-const Characters = () => {
+const Characters = ({search}) => {
     const [data, setData] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("https://localhost:4000/characters");
+                const response = await axios.get(`http://localhost:4000/characters?name=${search}`);
                 setData(response.data);
                 setIsLoading(false);
             } catch (error) {
@@ -17,12 +17,14 @@ const Characters = () => {
         };
 
         fetchData();
-    }, []);
+    }, [search]);
 
     return isLoading ? (
-        <p>Loading...</p>
+        <div className="loading">
+            <p>Loading...</p>
+        </div>
     ) : (
-        <div>
+        <div className="container characters">
             <h1>Characters</h1>
             {data.results.map((character, index) => {
                 return (

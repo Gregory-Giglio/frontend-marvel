@@ -1,0 +1,70 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    font-size: 32px;
+}
+
+header {
+    max-width: 1200px;
+    height: 70px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+header img {
+    width: 150px;
+}
+
+.header-search {
+    width:600px;
+    height: 40px;
+    background-color: #F5F6F7;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+header nav {
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    text-decoration: none;
+}
+
+header nav p {
+    color: white;
+}
+
+
+.characters img {
+    width: 300px;
+}
+
+.comics img {
+    width: 300px;
+}
