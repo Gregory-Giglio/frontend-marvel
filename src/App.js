@@ -7,6 +7,7 @@ import NoMatch from "./pages/NoMatch";
 import Characters from "./pages/Characters";
 import Comics from "./pages/Comics";
 import Favorites from "./pages/Favorites";
+import ComicsByCharacter from "./pages/ComicsByCharacter";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Characters search={search}/>} />
         <Route path="/comics" element={<Comics search={search}/>} />
         <Route path="/favorites" element={<Favorites/>} />
+        <Route path="/comicsbycharacter/:characterId" element={<ComicsByCharacter/>}/>
         <Route path="*" element={<NoMatch/>}/>
       </Routes>
     </Router>
