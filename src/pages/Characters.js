@@ -2,7 +2,8 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Characters = ({search}) => {
+
+const Characters = ({search, favoritesChars, handleFavoritesChar}) => {
     const [data, setData] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const [page, setPage] = useState(1);
@@ -22,6 +23,7 @@ const Characters = ({search}) => {
         fetchData();
     }, [search, page]);
 
+    
     return isLoading ? (
         <div className="loading">
             <p>Loading...</p>
@@ -50,6 +52,15 @@ const Characters = ({search}) => {
                 >suivante</button>
             </div>
             {data.results.map((character, index) => {
+                let check = false;
+                const tabFavoritesChars = favoritesChars.split(",");
+                for (let i=0; i<tabFavoritesChars.length; i++) {
+                    if (tabFavoritesChars[i] === character._id){
+                        check = true;
+                        break;
+                    }
+                };
+                
                 return (
                     <div key={character._id}>
                          <Link to={`/comicsbycharacter/${character._id}`} className="nodecoration">
@@ -62,6 +73,16 @@ const Characters = ({search}) => {
                             />
                             {character.description && <p>{character.description}</p>}
                         </Link>
+                        <div>
+                            <input type="checkbox"
+                                                                
+                                checked={check}                                 
+                                onChange={() => {
+                                    handleFavoritesChar(character._id);
+                                }}
+                            />          
+                            <span>Favoris</span>
+                        </div>
                     </div>
                 );
             })}
