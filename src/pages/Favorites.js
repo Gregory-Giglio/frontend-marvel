@@ -40,8 +40,9 @@ const Favorites = ({favoritesChars, handleFavoritesChar}) => {
             <p>Loading...</p>
         </div>
     ) : (
-            <div className="container characters">
+            <div className="container">
                 <h1>Personnages favoris</h1>
+                <div className="characters">
                 {data.map((character, index) => {                    
                     return (
                         <div key={character._id}>
@@ -66,7 +67,8 @@ const Favorites = ({favoritesChars, handleFavoritesChar}) => {
                             </div>
                         </div>
                     );
-                })}  
+                })}
+                </div>  
             </div>
         );
     };

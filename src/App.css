@@ -10,6 +10,14 @@ body {
 
 h1 {
     font-size: 32px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .loading {
@@ -65,9 +73,28 @@ header nav p {
     color: white;
 }
 
+.characters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.character {
+    flex: 1;
+}
 
 .characters img {
-    width: 300px;
+    width: 275px;
+}
+
+.comics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.comic {
+    flex: 1;
 }
 
 .comics img {
@@ -78,6 +105,10 @@ header nav p {
     display: flex;
     margin-top: 10px;
     margin-bottom: 10px;
-    gap: 5px;
-   
+    gap: 5px;   
+    align-items: center;
+}
+
+.paging img{
+    width: 50px;
 }

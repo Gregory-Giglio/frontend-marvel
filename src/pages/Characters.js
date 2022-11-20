@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import flecheGauche from "../components/img/Fleche-gauche-rouge-icon.png";
+import flecheDroite from "../components/img/Fleche-droite-rouge-icon.png";
 
 
 const Characters = ({search, favoritesChars, handleFavoritesChar}) => {
@@ -29,11 +31,11 @@ const Characters = ({search, favoritesChars, handleFavoritesChar}) => {
             <p>Loading...</p>
         </div>
     ) : (
-        <div className="container characters">
+        <div className="container">
             
             <h1>Personnages</h1>
             <div className="paging">
-                <button
+                <p
                     onClick={()=>{
                         if (page > 1){
                             const previousPage = page - 1;
@@ -41,16 +43,17 @@ const Characters = ({search, favoritesChars, handleFavoritesChar}) => {
                             setIsLoading(true);
                         };
                     }}
-                >précédente</button>
+                ><img src={flecheGauche} alt="previous" /></p>
                 <p>page {page}</p>
-                <button
+                <p
                     onClick={()=>{
                         const nextPage = page + 1;
                         setPage(nextPage);
                         setIsLoading(true);
                     }}
-                >suivante</button>
+                ><img src={flecheDroite} alt="next" /></p>
             </div>
+            <div className="characters">
             {data.results.map((character, index) => {
                 let check = false;
                 const tabFavoritesChars = favoritesChars.split(",");
@@ -62,7 +65,7 @@ const Characters = ({search, favoritesChars, handleFavoritesChar}) => {
                 };
                 
                 return (
-                    <div key={character._id}>
+                    <div key={character._id} className="character">
                          <Link to={`/comicsbycharacter/${character._id}`} className="nodecoration">
                             <h3>{character.name}</h3>
                             <img
@@ -86,6 +89,7 @@ const Characters = ({search, favoritesChars, handleFavoritesChar}) => {
                     </div>
                 );
             })}
+            </div>
         </div>
     );
 };

@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import flecheGauche from "../components/img/Fleche-gauche-rouge-icon.png";
+import flecheDroite from "../components/img/Fleche-droite-rouge-icon.png";
+
 
 const Comics = ({search}) => {
     const [data, setData] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const [page, setPage] = useState(1);
-
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -27,10 +30,10 @@ const Comics = ({search}) => {
         </div>
     ) : (
         
-        <div className="container comics">
+        <div className="container">
             <h1>Comics</h1>
             <div className="paging">
-                <button
+                <p
                     onClick={()=>{
                         if (page > 1){
                             const previousPage = page - 1;
@@ -38,19 +41,20 @@ const Comics = ({search}) => {
                             setIsLoading(true);
                         };
                     }}
-                >précédente</button>
+                ><img src={flecheGauche} alt="previous" /></p>
                 <p>page {page}</p>
-                <button
+                <p
                     onClick={()=>{
                         const nextPage = page + 1;
                         setPage(nextPage);
                         setIsLoading(true);
                     }}
-                >suivante</button>
+                ><img src={flecheDroite} alt="next" /></p>
             </div>
+            <div className="comics">
             {data.results.map((comic, index) => {
                 return (
-                    <div key={comic._id}>
+                    <div key={comic._id} className="comic">
                         <h3>{comic.title}</h3>
                         <img
                             src={
@@ -63,6 +67,7 @@ const Comics = ({search}) => {
                     </div>
                 );
             })}
+            </div>
     </div>
     );
 };

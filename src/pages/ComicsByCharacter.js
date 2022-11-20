@@ -28,11 +28,12 @@ const ComicsByCharacter = () => {
         </div>
     ) : (
         
-        <div className="container comics">
-        <h1>Comics of {data.name}</h1>
+        <div className="container">
+        <h1>Comics liés à {data.name}</h1>
+        <div className="comics">
         {data.comics.map((comic, index) => {
             return (
-                <div key={comic._id}>
+                <div key={comic._id} className="comic">
                     <h3>{comic.title}</h3>
                     <img
                         src={
@@ -44,6 +45,7 @@ const ComicsByCharacter = () => {
                 </div>
             );
         })}
+        </div>
     </div>
     );
 };
