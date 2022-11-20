@@ -14,7 +14,7 @@ const Favorites = ({favoritesChars, handleFavoritesChar}) => {
         const fetchData = async () => {
             
             try {
-                const response = await axios.post("http://localhost:4000/favorites-characters",
+                const response = await axios.post("https://site--backend-marvel--4pswvlk4zjzj.code.run/favorites-characters",
                 {
                     favorites : tabFavoritesChars,
                 }

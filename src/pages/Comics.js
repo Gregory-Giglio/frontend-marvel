@@ -10,7 +10,7 @@ const Comics = ({search}) => {
         const fetchData = async () => {
             try {
                 const skip = (100 * (page - 1));
-                const response = await axios.get(`http://localhost:4000/comics?title=${search}&skip=${skip}`);
+                const response = await axios.get(`https://site--backend-marvel--4pswvlk4zjzj.code.run/comics?title=${search}&skip=${skip}`);
                 setData(response.data);
                 setIsLoading(false);
             } catch (error) {

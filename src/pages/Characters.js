@@ -12,7 +12,7 @@ const Characters = ({search, favoritesChars, handleFavoritesChar}) => {
         const fetchData = async () => {
             try {
                 const skip = (100 * (page - 1));
-                const response = await axios.get(`http://localhost:4000/characters?name=${search}&skip=${skip}`);
+                const response = await axios.get(`https://site--backend-marvel--4pswvlk4zjzj.code.run/characters?name=${search}&skip=${skip}`);
                 setData(response.data);
                 setIsLoading(false);
             } catch (error) {
